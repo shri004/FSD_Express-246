@@ -4,28 +4,36 @@ const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
-      trim: true
+      required: [true, "Product name is required"],
+      trim: true,
+      maxLength: [100, "Name should not exceed 100 characters"],
     },
     price: {
       type: Number,
-      required: true
+      required: [true, "Price is required"],
+      min: [0, "Price can't be negative"],
+    },
+    description: {
+      type: String, 
+      trim: true,
     },
     category: {
       type: String,
-      required: true
+      default: "others",
+      enum: ["electronics", "clothing", "food", "others"], 
     },
     stock: {
       type: Number,
-      default: 0
+      default: 0,
+      min: [0, "Stock can't be negative"], 
     },
     isActive: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

@@ -8,10 +8,10 @@ const app =express();
 
 //Built-in Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));  //allow form data
 
 //Health checkup
-app.get('/', (req,res) => {
+app.get('/', (req,res) => {               // "/" represents home, so here we are setting a display message
     res.json({ message:'Product API is running'});
 });
 
